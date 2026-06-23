@@ -3,7 +3,7 @@
 我親手打造的 UI 元件展示站,每個元件都有可互動的 live demo。
 以 React + Vite + Tailwind 製作,部署於 GitHub Pages。
 
-🔗 線上展示:`https://<your-username>.github.io/ui-gallery/`
+🔗 線上展示:`https://liao-yu-chong.github.io/ui-gallery/`
 
 ## 目前收錄的元件
 

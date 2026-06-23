@@ -3,8 +3,8 @@ import { useState } from 'react';
 import { components } from './gallery/registry';
 
 // TODO: 換成你的 GitHub repo 與名字
-const GITHUB_URL = 'https://github.com/your-username/ui-gallery';
-const AUTHOR = 'Your Name';
+const GITHUB_URL = 'https://github.com/Liao-Yu-Chong/ui-gallery';
+const AUTHOR = 'Liao-Yu-Chong';
 
 export default function App() {
     const [activeId, setActiveId] = useState(components[0]?.id ?? '');
