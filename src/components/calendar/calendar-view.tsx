@@ -171,9 +171,10 @@ function DraggableBar({ span, dragId, disabled }: DraggableBarProps) {
             onClick={e => e.stopPropagation()}
             className={cn(
                 'absolute flex items-center text-xs font-medium overflow-hidden pointer-events-auto z-10',
-                isActualStart ? 'rounded-l pl-1.5' : '',
+                isActualStart ? 'rounded-l pl-2 border-l-2' : '',
                 isActualEnd ? 'rounded-r pr-1.5' : '',
                 event.barColor ?? 'bg-primary/20',
+                isActualStart && (event.dotColor?.replace('bg-', 'border-') ?? 'border-primary'),
                 event.barTextColor ?? 'text-primary',
                 isInteractive ? 'cursor-grab active:cursor-grabbing' : 'cursor-default',
                 isDragging && 'opacity-30'
@@ -619,20 +620,20 @@ const CalendarView = ({
                 <div className="flex items-center gap-2 mb-3">
                     <button
                         onClick={goToPrev}
-                        className="flex items-center gap-1 text-sm text-primary hover:text-primary transition-colors shrink-0"
+                        className="flex items-center gap-1 font-mono text-xs tracking-wide text-primary hover:text-primary transition-colors shrink-0"
                     >
-                        <ChevronLeft size={16} />
+                        <ChevronLeft size={14} />
                         {prevLabel}
                     </button>
-                    <span className="flex-1 text-center text-base font-semibold text-foreground truncate">
+                    <span className="flex-1 text-center text-lg font-bold text-foreground truncate font-serif">
                         {headerLabel}
                     </span>
                     <button
                         onClick={goToNext}
-                        className="flex items-center gap-1 text-sm text-primary hover:text-primary transition-colors shrink-0"
+                        className="flex items-center gap-1 font-mono text-xs tracking-wide text-primary hover:text-primary transition-colors shrink-0"
                     >
                         {nextLabel}
-                        <ChevronRight size={16} />
+                        <ChevronRight size={14} />
                     </button>
 
                     {/* 視圖切換按鈕 */}

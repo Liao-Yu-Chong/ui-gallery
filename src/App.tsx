@@ -23,7 +23,7 @@ export default function App() {
 
             {/* ── Top bar ── */}
             <header className="sticky top-0 z-50 backdrop-blur-md bg-background/70 border-b border-border">
-                <div className="mx-auto flex max-w-5xl items-center justify-between px-8 py-4">
+                <div className="mx-auto flex max-w-[1140px] items-center justify-between px-8 py-4">
                     {/* Logo */}
                     <div className="flex items-center gap-2.5">
                         <span className="h-2 w-2 rounded-full bg-primary shadow-[0_0_8px_rgba(229,160,74,0.8)]" />
@@ -45,7 +45,7 @@ export default function App() {
                 </div>
             </header>
 
-            <div className="relative z-10 mx-auto max-w-5xl px-8">
+            <div className="relative z-10 mx-auto max-w-[1140px] px-8">
                 {/* ── Hero ── */}
                 <section className="pb-14 pt-20">
                     <p className="font-mono text-xs tracking-[0.32em] text-muted-foreground/60 mb-6">
@@ -169,8 +169,9 @@ export default function App() {
             </div>
 
             {/* ── Footer ── */}
-            <footer className="relative z-10 border-t border-border">
-                <div className="mx-auto max-w-5xl px-8 py-7 flex items-center justify-between font-mono text-[11px] tracking-wide text-muted-foreground/40">
+            <footer className="relative z-10 border-t border-border
+">
+                <div className="mx-auto max-w-[1140px] px-8 py-7 flex items-center justify-between font-mono text-[11px] tracking-wide text-muted-foreground/40">
                     <span>© 2026 廖宥驄 Evan Liao</span>
                     <span>
                         Designed &amp; built by myself ·{' '}

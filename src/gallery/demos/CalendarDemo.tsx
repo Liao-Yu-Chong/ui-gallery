@@ -19,8 +19,8 @@ const initialEvents: CalendarEvent[] = [
         label: 'Sprint 14',
         tooltip: 'Sprint 14 開發週期（6/8 – 6/12）',
         dotColor: 'bg-violet-500',
-        barColor: 'bg-violet-100',
-        barTextColor: 'text-violet-700',
+        barColor: 'bg-violet-500/15',   // 暗色主題：半透明紫
+        barTextColor: 'text-violet-300',
     },
     {
         id: 'e3',
@@ -36,8 +36,8 @@ const initialEvents: CalendarEvent[] = [
         label: '客戶試營運',
         tooltip: '客戶試營運（6/15 – 6/19）',
         dotColor: 'bg-amber-500',
-        barColor: 'bg-amber-100',
-        barTextColor: 'text-amber-700',
+        barColor: 'bg-amber-500/15',    // 暗色主題：半透明琥珀
+        barTextColor: 'text-amber-300',
     },
     {
         id: 'e5',
@@ -77,8 +77,8 @@ const specialDays: CalendarSpecialDay[] = [
     {
         date: '2026-06-19',
         label: '端午節',
-        color: 'bg-red-50',
-        textColor: 'text-red-500',
+        color: 'bg-red-500/10',         // 暗色主題：半透明紅
+        textColor: 'text-red-400',
     },
 ];
 
