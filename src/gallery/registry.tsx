@@ -27,13 +27,14 @@ export const components: GalleryComponent[] = [
     {
         id: 'calendar',
         name: '行事曆 Calendar',
-        description: '月檢視行事曆，支援多日事件、拖拉移動、特殊節日與每日事件上限。',
+        description: '月／週／日三種檢視的行事曆,支援多日事件長條、拖拉移動、特殊節日標記與每日事件上限收合。',
         highlights: [
             '單日圓點 + 多日事件長條兩種呈現',
             '事件可拖拉到其他日期（@dnd-kit）',
             '特殊節日標記（自訂底色與文字色）',
             '超過上限的事件收合為「更多」',
             'hover 顯示完整事件 tooltip',
+            '月 / 週 / 日 視圖切換'
         ],
         tags: ['React', 'TypeScript', 'Tailwind', 'date-fns', '@dnd-kit'],
         Demo: CalendarDemo,

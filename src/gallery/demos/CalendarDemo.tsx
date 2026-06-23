@@ -89,6 +89,7 @@ export default function CalendarDemo() {
     return (
         <TooltipProvider delayDuration={150}>
             <CalendarView
+                className="h-[600px]"
                 events={events}
                 selectedDate={selectedDate}
                 specialDays={specialDays}

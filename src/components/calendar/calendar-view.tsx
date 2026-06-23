@@ -171,10 +171,9 @@ function DraggableBar({ span, dragId, disabled }: DraggableBarProps) {
             onClick={e => e.stopPropagation()}
             className={cn(
                 'absolute flex items-center text-xs font-medium overflow-hidden pointer-events-auto z-10',
-                isActualStart ? 'rounded-l pl-2 border-l-2' : '',
+                isActualStart ? 'rounded-l pl-2 border-l-2 border-current' : '',
                 isActualEnd ? 'rounded-r pr-1.5' : '',
                 event.barColor ?? 'bg-primary/20',
-                isActualStart && (event.dotColor?.replace('bg-', 'border-') ?? 'border-primary'),
                 event.barTextColor ?? 'text-primary',
                 isInteractive ? 'cursor-grab active:cursor-grabbing' : 'cursor-default',
                 isDragging && 'opacity-30'
@@ -261,8 +260,8 @@ function DateCell({
             <div className="flex items-start justify-between" style={{ height: DATE_AREA_H }}>
                 <span
                     className={cn(
-                        'inline-flex h-6 w-6 items-center justify-center rounded-full text-xs font-medium shrink-0',
-                        isToday && 'bg-primary text-primary-foreground',
+                        'inline-flex h-6 min-w-[1.5rem] px-1 items-center justify-center rounded-full text-xs font-medium shrink-0',
+                        isToday && 'ring-1 ring-primary text-primary font-bold',
                         !isToday && inMonth && 'text-foreground',
                         !isToday && !inMonth && 'text-muted-foreground/30'
                     )}
