@@ -130,7 +130,7 @@ function DraggableChip({ event, disabled }: { event: CalendarEvent; disabled: bo
             )}
         >
             <span className={cn('h-2 w-2 shrink-0 rounded-full', event.dotColor)} />
-            <span className="truncate text-zinc-700">{event.label}</span>
+            <span className="truncate text-foreground">{event.label}</span>
         </div>
     );
 
@@ -173,8 +173,8 @@ function DraggableBar({ span, dragId, disabled }: DraggableBarProps) {
                 'absolute flex items-center text-xs font-medium overflow-hidden pointer-events-auto z-10',
                 isActualStart ? 'rounded-l pl-1.5' : '',
                 isActualEnd ? 'rounded-r pr-1.5' : '',
-                event.barColor ?? 'bg-sky-100',
-                event.barTextColor ?? 'text-sky-700',
+                event.barColor ?? 'bg-primary/20',
+                event.barTextColor ?? 'text-primary',
                 isInteractive ? 'cursor-grab active:cursor-grabbing' : 'cursor-default',
                 isDragging && 'opacity-30'
             )}
@@ -248,12 +248,12 @@ function DateCell({
             ref={setNodeRef}
             onClick={() => onDateSelect?.(day)}
             className={cn(
-                'border-b border-r border-zinc-200 p-1.5 overflow-hidden cursor-pointer transition-colors flex flex-col',
+                'border-b border-r border-border p-1.5 overflow-hidden cursor-pointer transition-colors flex flex-col',
                 isSelected
-                    ? 'bg-sky-50'
+                    ? 'bg-primary/10'
                     : (special?.color ??
-                          (inMonth ? 'bg-white hover:bg-zinc-50' : 'bg-zinc-50 hover:bg-zinc-100')),
-                dragEnabled && isOver && 'ring-2 ring-inset ring-sky-400'
+                          (inMonth ? 'bg-background hover:bg-muted/40' : 'bg-muted/30 hover:bg-muted/60')),
+                dragEnabled && isOver && 'ring-2 ring-inset ring-primary'
             )}
         >
             {/* 日期數字 + 特殊日標籤 */}
@@ -261,9 +261,9 @@ function DateCell({
                 <span
                     className={cn(
                         'inline-flex h-6 w-6 items-center justify-center rounded-full text-xs font-medium shrink-0',
-                        isToday && 'bg-sky-600 text-white',
-                        !isToday && inMonth && 'text-zinc-700',
-                        !isToday && !inMonth && 'text-zinc-300'
+                        isToday && 'bg-primary text-primary-foreground',
+                        !isToday && inMonth && 'text-foreground',
+                        !isToday && !inMonth && 'text-muted-foreground/30'
                     )}
                 >
                     {format(day, 'd')}
@@ -272,7 +272,7 @@ function DateCell({
                     <span
                         className={cn(
                             'text-[10px] font-medium truncate leading-5 ml-1',
-                            special.textColor ?? 'text-red-500'
+                            special.textColor ?? 'text-destructive'
                         )}
                     >
                         {special.label}
@@ -297,7 +297,7 @@ function DateCell({
                         e.stopPropagation();
                         onMoreClick?.(day, dayEvents.slice(maxVisibleEvents));
                     }}
-                    className="text-xs text-sky-500 hover:text-sky-700 transition-colors self-start mt-1"
+                    className="text-xs text-primary hover:text-primary transition-colors self-start mt-1"
                 >
                     查看更多...（共 {dayEvents.length} 筆）
                 </button>
@@ -563,13 +563,13 @@ const CalendarView = ({
         });
 
         return (
-            <div className="flex-1 min-h-0 overflow-y-auto border-t border-zinc-200">
+            <div className="flex-1 min-h-0 overflow-y-auto border-t border-border">
                 {special && (
                     <div
                         className={cn(
                             'mx-3 mt-3 rounded px-3 py-1.5 text-xs font-medium',
-                            special.color ?? 'bg-red-50',
-                            special.textColor ?? 'text-red-600'
+                            special.color ?? 'bg-destructive/10',
+                            special.textColor ?? 'text-destructive'
                         )}
                     >
                         {special.label}
@@ -581,8 +581,8 @@ const CalendarView = ({
                             key={evt.id}
                             className={cn(
                                 'rounded-md px-3 py-2 text-xs font-medium flex items-center gap-2',
-                                evt.barColor ?? 'bg-sky-100',
-                                evt.barTextColor ?? 'text-sky-700'
+                                evt.barColor ?? 'bg-primary/20',
+                                evt.barTextColor ?? 'text-primary'
                             )}
                         >
                             <span>{evt.label}</span>
@@ -594,16 +594,16 @@ const CalendarView = ({
                     {dayEvents.map(evt => (
                         <div
                             key={evt.id}
-                            className="flex items-center gap-2.5 py-2 border-b border-zinc-100 last:border-0"
+                            className="flex items-center gap-2.5 py-2 border-b border-border last:border-0"
                         >
                             <span
                                 className={cn('h-2.5 w-2.5 shrink-0 rounded-full', evt.dotColor)}
                             />
-                            <span className="text-sm text-zinc-700">{evt.label}</span>
+                            <span className="text-sm text-foreground">{evt.label}</span>
                         </div>
                     ))}
                     {daySpanning.length === 0 && dayEvents.length === 0 && (
-                        <p className="text-sm text-zinc-400 text-center py-12">當日無事件</p>
+                        <p className="text-sm text-muted-foreground/60 text-center py-12">當日無事件</p>
                     )}
                 </div>
             </div>
@@ -619,34 +619,34 @@ const CalendarView = ({
                 <div className="flex items-center gap-2 mb-3">
                     <button
                         onClick={goToPrev}
-                        className="flex items-center gap-1 text-sm text-sky-600 hover:text-sky-700 transition-colors shrink-0"
+                        className="flex items-center gap-1 text-sm text-primary hover:text-primary transition-colors shrink-0"
                     >
                         <ChevronLeft size={16} />
                         {prevLabel}
                     </button>
-                    <span className="flex-1 text-center text-base font-semibold text-zinc-800 truncate">
+                    <span className="flex-1 text-center text-base font-semibold text-foreground truncate">
                         {headerLabel}
                     </span>
                     <button
                         onClick={goToNext}
-                        className="flex items-center gap-1 text-sm text-sky-600 hover:text-sky-700 transition-colors shrink-0"
+                        className="flex items-center gap-1 text-sm text-primary hover:text-primary transition-colors shrink-0"
                     >
                         {nextLabel}
                         <ChevronRight size={16} />
                     </button>
 
                     {/* 視圖切換按鈕 */}
-                    <div className="flex rounded-md border border-zinc-200 overflow-hidden text-xs shrink-0">
+                    <div className="flex rounded-md border border-border overflow-hidden text-xs shrink-0">
                         {(['month', 'week', 'day'] as const).map((v, i) => (
                             <button
                                 key={v}
                                 onClick={() => handleViewChange(v)}
                                 className={cn(
                                     'px-2.5 py-1 transition-colors',
-                                    i > 0 && 'border-l border-zinc-200',
+                                    i > 0 && 'border-l border-border',
                                     view === v
-                                        ? 'bg-sky-600 text-white'
-                                        : 'bg-white text-zinc-600 hover:bg-zinc-50'
+                                        ? 'bg-primary text-primary-foreground'
+                                        : 'bg-background text-muted-foreground hover:bg-muted/30'
                                 )}
                             >
                                 {VIEW_LABELS[v]}
@@ -661,7 +661,7 @@ const CalendarView = ({
                         {WEEK_DAYS.map(d => (
                             <div
                                 key={d}
-                                className="text-center text-xs font-medium text-zinc-500 py-1"
+                                className="text-center text-xs font-medium text-muted-foreground py-1"
                             >
                                 {d}
                             </div>
@@ -671,7 +671,7 @@ const CalendarView = ({
 
                 {/* 月視圖 */}
                 {view === 'month' && (
-                    <div className="flex-1 min-h-0 flex flex-col border-t border-l border-zinc-200">
+                    <div className="flex-1 min-h-0 flex flex-col border-t border-l border-border">
                         {weeks.map((week, i) => (
                             <WeekRow
                                 key={i}
@@ -695,7 +695,7 @@ const CalendarView = ({
 
                 {/* 週視圖 */}
                 {view === 'week' && (
-                    <div className="flex-1 min-h-0 flex flex-col border-t border-l border-zinc-200">
+                    <div className="flex-1 min-h-0 flex flex-col border-t border-l border-border">
                         <WeekRow
                             week={weekDays}
                             weekKey={0}
@@ -725,21 +725,21 @@ const CalendarView = ({
                         <div
                             className={cn(
                                 'rounded px-2.5 py-1 text-xs font-medium shadow-lg opacity-95 cursor-grabbing select-none',
-                                activeEvent.barColor ?? 'bg-sky-100',
-                                activeEvent.barTextColor ?? 'text-sky-700'
+                                activeEvent.barColor ?? 'bg-primary/20',
+                                activeEvent.barTextColor ?? 'text-primary'
                             )}
                         >
                             {activeEvent.label}
                         </div>
                     ) : (
-                        <div className="flex items-center gap-1.5 bg-white shadow-lg rounded px-2.5 py-1 text-xs cursor-grabbing select-none">
+                        <div className="flex items-center gap-1.5 bg-card shadow-lg rounded px-2.5 py-1 text-xs cursor-grabbing select-none">
                             <span
                                 className={cn(
                                     'h-2 w-2 shrink-0 rounded-full',
                                     activeEvent.dotColor
                                 )}
                             />
-                            <span className="text-zinc-700 font-medium">{activeEvent.label}</span>
+                            <span className="text-foreground font-medium">{activeEvent.label}</span>
                         </div>
                     )
                 ) : null}
