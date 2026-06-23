@@ -260,8 +260,8 @@ function DateCell({
             <div className="flex items-start justify-between" style={{ height: DATE_AREA_H }}>
                 <span
                     className={cn(
-                        'inline-flex h-6 min-w-[1.5rem] px-1 items-center justify-center rounded-full text-xs font-medium shrink-0',
-                        isToday && 'ring-1 ring-primary text-primary font-bold',
+                        'inline-flex h-6 min-w-[1.5rem] px-[5px] items-center justify-center rounded-full text-xs font-mono shrink-0',
+                        isToday && 'border border-primary text-primary font-bold',
                         !isToday && inMonth && 'text-foreground',
                         !isToday && !inMonth && 'text-muted-foreground/30'
                     )}
@@ -661,7 +661,7 @@ const CalendarView = ({
                         {WEEK_DAYS.map(d => (
                             <div
                                 key={d}
-                                className="text-center text-xs font-medium text-muted-foreground py-1"
+                                className="text-center font-mono text-[11px] tracking-wide text-muted-foreground/60 py-1"
                             >
                                 {d}
                             </div>
