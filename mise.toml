@@ -1,0 +1,4 @@
+[tools]
+# npm 由 node 內建提供；沒有這個檔案時 mise 在本目錄不會啟用任何 node，
+# npm shim 就會回報 "cannot find binary path"。
+node = "24.18.0"

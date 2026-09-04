@@ -8,6 +8,14 @@ updates:
     directory: "/" # package.json 所在位置(專案根目錄)
     schedule:
       interval: "weekly" # 每週檢查一次
+    ignore:
+      # 擋掉 typescript 的 major 更新。目前沒有任何 typescript-eslint 版本支援
+      # TS 7(8.69.0 的 peer 仍是 ">=4.8.4 <6.1.0"),升上去會讓 npm install
+      # 直接 ERESOLVE 失敗,npm run lint 也會噴
+      # "typescript-eslint does not support TS 7.0"。
+      # typescript-eslint 支援 TS 7 之後,把這段拿掉即可。
+      - dependency-name: "typescript"
+        update-types: ["version-update:semver-major"]
     open-pull-requests-limit: 10
     groups:
       # 把次要 / 修補版更新合併成一個 PR,減少 PR 數量
