@@ -1,6 +1,7 @@
 import type { ComponentType } from 'react';
 
 import CalendarDemo from './demos/CalendarDemo';
+import BtnAgileDemo from './demos/BtnAgileDemo';
 
 export interface GalleryComponent {
     /** URL-safe id, also used as the sidebar key */
@@ -38,5 +39,20 @@ export const components: GalleryComponent[] = [
         ],
         tags: ['React', 'TypeScript', 'Tailwind', 'date-fns', '@dnd-kit'],
         Demo: CalendarDemo,
+    },
+    {
+        id: 'btn-agile',
+        name: '敏捷按鈕 BtnAgile',
+        description: '停用狀態下會翻轉、歪斜、彈開逃跑的惡搞按鈕，200ms 後自動彈回原位。',
+        highlights: [
+            '停用時點擊會往隨機方向彈開並上下翻面',
+            'spring 動畫，放開後 200ms 自動歸位',
+            '連點 throttle，避免動畫互相打架',
+            '鍵盤 Enter 也能觸發',
+            'render-prop 可完全自訂按鈕外觀',
+            '刻意不用原生 disabled，否則收不到 pointer 事件',
+        ],
+        tags: ['React', 'TypeScript', 'Tailwind', 'Motion'],
+        Demo: BtnAgileDemo,
     },
 ];
